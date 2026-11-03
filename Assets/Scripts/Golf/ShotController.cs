@@ -58,7 +58,12 @@ public class ShotController : MonoBehaviour
         StrokesUsed = 0;
         EnterAiming();
     }
-
+    public void StartTurnAt(Vector3 position)
+    {
+        turnStartPosition = position;
+        ball.ResetTo(position);
+        BeginTurn();
+    }
     void Update()
     {
         // Debug: restart the whole turn.
