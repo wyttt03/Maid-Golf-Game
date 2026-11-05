@@ -81,6 +81,12 @@ public class GolfBall : MonoBehaviour
 
     public void SetSurfaceDamping(float damping) => rb.linearDamping = damping;
     public void ClearSurfaceDamping() => rb.linearDamping = baseDamping;
+    public void ApplySettings(float damping, PhysicsMaterial material)
+    {
+        baseDamping = damping;
+        rb.linearDamping = damping;
+        if (material) GetComponent<Collider>().sharedMaterial = material;
+    }
 
     // holeCenter is kept so older GolfZone holes still compile.
     public bool NotifyHoled(Vector3 holeCenter)

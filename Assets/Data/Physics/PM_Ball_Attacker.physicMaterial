@@ -6,7 +6,7 @@ PhysicsMaterial:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PM_Ball
+  m_Name: PM_Ball_Attacker
   serializedVersion: 2
   m_DynamicFriction: 0.3
   m_StaticFriction: 0.3

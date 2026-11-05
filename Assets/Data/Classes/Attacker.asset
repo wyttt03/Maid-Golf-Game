@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82dc4c59adb629c42b86dcbd48ab5b30, type: 3}
+  m_Name: Attacker
+  m_EditorClassIdentifier: Assembly-CSharp::ClassConfig
+  displayName: Attacker
+  description: Long spoon. High power for long shots, harder to control up close.
+    Stronger Attack.
+  damageModifier: 1
+  defenseModifier: 1
+  reflectModifier: 1
+  maxShotSpeed: 9
+  meterSpeed: 1.5
+  minPower: 0.1
+  ballDamping: 0.5
+  ballMaterial: {fileID: 13400000, guid: 492e9b9608245eb4b82c5f291bcfb14f, type: 2}
+  signatureAction: 0
+  signatureHoleBonus: 0
+  signatureMeterMultiplier: 0.85
