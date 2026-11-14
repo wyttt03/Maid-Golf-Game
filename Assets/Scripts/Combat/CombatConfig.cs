@@ -6,39 +6,41 @@ public class CombatConfig : ScriptableObject
     [Header("HP")]
     public int startHP = 100;
 
-    [Header("Base active damage")]
-    public float attackBase = 30f;
-    public float defendBase = 10f;
-    public float reflectBase = 10f;
+    [Header("Damage dealt by stroke result")]
+    public int holeInOneDamage = 40;
+    public int twoStrokesDamage = 25;
+    public int failedDamage = 0;
 
-    [Header("Special effects")]
-    [Range(0f, 1f)] public float defendReduction = 0.5f;
-    public float reflectRatio = 0.8f;
-    [Range(0f, 1f)] public float maxReduction = 0.9f;
-    public float maxReflect = 1.5f;
+    [Header("Counter")]
+    [Tooltip("Extra damage when your action counters the rival's and you hole the ball.")]
+    public int counterBonusDamage = 10;
 
-    [Header("Stroke multipliers")]
-    public float holeInOneMultiplier = 1.5f;
-    public float twoStrokesMultiplier = 1.0f;
-    public float failedMultiplier = 0f;
-
-    public float GetMultiplier(StrokeResult result)
+    public int GetDamage(StrokeResult result)
     {
         switch (result)
         {
-            case StrokeResult.HoleInOne: return holeInOneMultiplier;
-            case StrokeResult.TwoStrokes: return twoStrokesMultiplier;
-            default: return failedMultiplier;
+            case StrokeResult.HoleInOne: return holeInOneDamage;
+            case StrokeResult.TwoStrokes: return twoStrokesDamage;
+            default: return failedDamage;
         }
+    }
+
+    // Attack beats Defend, Defend beats Reflect, Reflect beats Attack.
+    public static bool Counters(CombatAction mine, CombatAction theirs)
+    {
+        return (mine == CombatAction.Attack && theirs == CombatAction.Defend)
+            || (mine == CombatAction.Defend && theirs == CombatAction.Reflect)
+            || (mine == CombatAction.Reflect && theirs == CombatAction.Attack);
+    }
+
+    // Legacy helpers kept so older UI code still compiles. Not used by the current rules.
+    public float GetMultiplier(StrokeResult result)
+    {
+        return result == StrokeResult.HoleInOne ? 1.5f : result == StrokeResult.TwoStrokes ? 1f : 0f;
     }
 
     public float GetBaseDamage(CombatAction action)
     {
-        switch (action)
-        {
-            case CombatAction.Attack: return attackBase;
-            case CombatAction.Defend: return defendBase;
-            default: return reflectBase;
-        }
+        return twoStrokesDamage;
     }
 }

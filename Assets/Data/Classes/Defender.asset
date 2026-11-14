@@ -13,16 +13,18 @@ MonoBehaviour:
   m_Name: Defender
   m_EditorClassIdentifier: Assembly-CSharp::ClassConfig
   displayName: Defender
-  description: Big round spoon. Slow, steady ball. Bigger cup on Defend. Stronger
-    Defend.
+  description: Big round spoon. Slow, steady roll that stops quickly. Easy course
+    on Defend.
   damageModifier: 1
   defenseModifier: 1
   reflectModifier: 1
-  maxShotSpeed: 6
-  meterSpeed: 0.9
+  maxDistance: 11
+  aimBounces: 2
+  meterSpeed: 1
   minPower: 0.05
-  ballDamping: 0.9
+  maxShotSpeed: 0
+  ballDamping: 1.6
   ballMaterial: {fileID: 13400000, guid: c25458fb0eca4c942a3b34385dcf226f, type: 2}
   signatureAction: 1
-  signatureHoleBonus: 0.06
-  signatureMeterMultiplier: 0.85
+  signatureHoleBonus: 0
+  signatureMeterMultiplier: 1

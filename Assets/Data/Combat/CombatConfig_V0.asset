@@ -23,3 +23,7 @@ MonoBehaviour:
   holeInOneMultiplier: 1.5
   twoStrokesMultiplier: 1
   failedMultiplier: 0
+  holeInOneEffect: 1.5
+  twoStrokesEffect: 1
+  failedEffect: 0
+  counterBonus: 1

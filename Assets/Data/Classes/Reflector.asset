@@ -13,15 +13,18 @@ MonoBehaviour:
   m_Name: Reflector
   m_EditorClassIdentifier: Assembly-CSharp::ClassConfig
   displayName: Reflector
-  description: Short spoon. Bouncy ball, great for ricochets. Stronger Reflect.
+  description: Short spoon. Bouncy ball, great for ricochets off walls. Easy course
+    on Reflect.
   damageModifier: 1
   defenseModifier: 1
   reflectModifier: 1
-  maxShotSpeed: 7
-  meterSpeed: 1.2
-  minPower: 0.05
-  ballDamping: 0.6
+  maxDistance: 12
+  aimBounces: 2
+  meterSpeed: 1.15
+  minPower: 0.2
+  maxShotSpeed: 0
+  ballDamping: 1.4
   ballMaterial: {fileID: 13400000, guid: 801d716a52d855d449bebc1321b8d917, type: 2}
   signatureAction: 2
   signatureHoleBonus: 0
-  signatureMeterMultiplier: 0.85
+  signatureMeterMultiplier: 1

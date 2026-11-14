@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum GolfZoneType { Hole, Water, OutOfBounds }
 
@@ -10,9 +11,12 @@ public class GolfZone : MonoBehaviour
     [Header("Hole only")]
     [Tooltip("Capture radius in world units at scale 1. Scales with this object's X scale.")]
     public float captureRadius = 0.15f;
-
-    [Tooltip("Ball faster than this rolls over the hole instead of dropping in.")]
+    [Tooltip("Ball faster than this is not captured.")]
     public float maxCaptureSpeed = 2.5f;
+
+    [Header("Feedback")]
+    [Tooltip("Fired once when this zone catches the ball.")]
+    public UnityEvent onBallCaught;
 
     void Reset()
     {
@@ -24,7 +28,7 @@ public class GolfZone : MonoBehaviour
         if (type == GolfZoneType.Hole) return;
 
         var ball = other.GetComponentInParent<GolfBall>();
-        if (ball) ball.NotifyHazard(type);
+        if (ball && ball.NotifyHazard(type)) onBallCaught.Invoke();
     }
 
     void OnTriggerStay(Collider other)
@@ -39,13 +43,8 @@ public class GolfZone : MonoBehaviour
         float radius = captureRadius * transform.lossyScale.x;
 
         if (offset.magnitude <= radius && ball.Speed <= maxCaptureSpeed)
-            ball.NotifyHoled(transform.position);
-    }
-
-    void OnDrawGizmos()
-    {
-        if (type != GolfZoneType.Hole) return;
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, captureRadius * transform.lossyScale.x);
+        {
+            if (ball.NotifyHoled(transform.position)) onBallCaught.Invoke();
+        }
     }
 }
