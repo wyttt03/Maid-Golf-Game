@@ -101,14 +101,14 @@ public class MatchUI : MonoBehaviour
     public TMP_Text tutorialInstructionText;
     public TMP_Text tutorialResultText;
     [Tooltip("{0} class, {1} action")]
-    public string tutorialTitleFormat = "Practice: {0} - {1}";
+    public string tutorialTitleFormat = "PRACTICE  {0}  {1}";
     [Tooltip("Order: Attack, Defense, Reflect.")]
     [TextArea(2, 4)]
     public string[] tutorialInstructions =
     {
-        "Attack: aim freely.\nMove the mouse to aim, left click to confirm, then press Space to set the power.",
-        "Defense: the shot direction is fixed.\nMove the mouse to put the cup on the ball's path, left click, then press Space.",
-        "Reflect: the shot direction and the cup are fixed.\nMove the mouse to turn the board, left click, then press Space."
+        "AIM WITH THE MOUSE\nLEFT CLICK TO LOCK AIM\nPRESS SPACE TO SET POWER",
+        "THE SHOT DIRECTION IS FIXED\nMOVE THE CUP INTO THE BALL PATH\nLEFT CLICK TO LOCK IT\nPRESS SPACE TO SET POWER",
+        "THE SHOT AND CUP ARE FIXED\nTURN THE OBSTACLE TO LINE UP A BOUNCE\nLEFT CLICK TO LOCK IT\nPRESS SPACE TO SET POWER"
     };
 
     [Header("HP bar animation")]
@@ -125,7 +125,7 @@ public class MatchUI : MonoBehaviour
 
     [Header("Labels ({0}, {1}... are data slots, keep them)")]
     public string[] playerNames = { "P1", "P2" };
-    public string[] actionNames = { "Attack", "Defense", "Reflect" };
+    public string[] actionNames = { "ATTACK", "DEFEND", "REFLECT" };
     public string[] resultNames = { "PERFECT!", "NICE!", "MISS!" };
     [Tooltip("Colors for PERFECT, NICE and MISS.")]
     public Color[] resultColors =
@@ -135,31 +135,31 @@ public class MatchUI : MonoBehaviour
         new Color(0.75f, 0.75f, 0.75f)
     };
     [Tooltip("Indexed by WinReason: Draw, HP, Holes, Strokes. {0} = winner name.")]
-    public string[] winFormats = { "Draw", "{0} wins by HP", "{0} wins by holes made", "{0} wins by strokes" };
-    public string roundFormat = "Round {0}/{1}";
+    public string[] winFormats = { "DRAW", "{0} WINS ON HP", "{0} WINS ON HOLES", "{0} WINS ON STROKES" };
+    public string roundFormat = "ROUND {0} OF {1}";
     public string lockedLabel = "LOCKED";
-    public string choosingLabel = "Choosing...";
-    public string bonusFormat = "Easy course: {0}";
-    public string lastActionFormat = "Last round: {0}";
+    public string choosingLabel = "CHOOSING";
+    public string bonusFormat = "BONUS MOVE  {0}";
+    public string lastActionFormat = "LAST MOVE  {0}";
     [Tooltip("{0} player, {1} action")]
     public string revealActionFormat = "{0}\n{1}";
     [Tooltip("{0} player, {1} winning action, {2} losing action")]
-    public string revealCounterFormat = "{0}'s {1} counters {2}!\nHole the ball for +10 damage";
+    public string revealCounterFormat = "{0} COUNTERS!\n{1} BEATS {2}\nHOLE OUT FOR 10 BONUS DAMAGE";
     [Tooltip("{0} action")]
-    public string revealSameFormat = "Both chose {0}\nNo counter this round";
+    public string revealSameFormat = "BOTH CHOSE {0}\nNO COUNTER";
     [Tooltip("{0} player, {1} class, {2} action")]
-    public string preGolfFormat = "{0} ({1})\n{2}\n\nPress Enter";
+    public string preGolfFormat = "{0}  {1}\n{2}\n\nPRESS ENTER";
     [Tooltip("{0} player, {1} action")]
-    public string golfInfoFormat = "{0} - {1}";
-    public string strokesFormat = "Strokes {0}/{1}";
+    public string golfInfoFormat = "{0}  {1}";
+    public string strokesFormat = "STROKES {0} OF {1}";
     [Tooltip("{0} player, {1} result")]
     public string turnResultFormat = "{0}\n{1}";
     [Tooltip("{0} player, {1} winning action, {2} losing action")]
-    public string counterFormat = "COUNTER!  +10\n{0}: {1} beats {2}";
-    public string counterLabel = "COUNTER +10";
-    public string damageFormat = "-{0}";
+    public string counterFormat = "10 BONUS DAMAGE!\n{0}  {1} BEATS {2}";
+    public string counterLabel = "COUNTER!";
+    public string damageFormat = "{0} DAMAGE";
     [Tooltip("{0} action, {1} result, {3} damage dealt, {6} damage taken, {7} HP")]
-    public string roundColumnFormat = "{0}\n{1}\nDealt {3}\nTaken {6}\nHP {7}";
+    public string roundColumnFormat = "{0}\n{1}\nDEALT {3}\nTAKEN {6}\nHP {7}";
 
     readonly HudState s1 = new HudState();
     readonly HudState s2 = new HudState();
@@ -470,8 +470,8 @@ public class MatchUI : MonoBehaviour
 
     string PlayerName(MatchManager.PlayerState p) => Pick(playerNames, p == match.P1 ? 0 : 1, "");
     string ClassName(MatchManager.PlayerState p) => p.cls ? p.cls.displayName : "";
-    string ActionName(CombatAction a) => Pick(actionNames, (int)a, a.ToString());
-    string ResultName(StrokeResult r) => Pick(resultNames, (int)r, r.ToString());
+    string ActionName(CombatAction a) => Pick(actionNames, (int)a, a.ToString().ToUpperInvariant());
+    string ResultName(StrokeResult r) => Pick(resultNames, (int)r, r.ToString().ToUpperInvariant());
 
     static string Pick(string[] arr, int i, string fallback)
     {

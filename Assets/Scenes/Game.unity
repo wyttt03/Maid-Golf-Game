@@ -6711,8 +6711,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: P2
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
+  m_sharedMaterial: {fileID: 1140813912902175123, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6838,7 +6838,7 @@ MonoBehaviour:
   ghostLine: {fileID: 669325457}
   powerMarker: {fileID: 1975254755}
   maxStrokes: 2
-  defaultHint: 'Mouse: aim    Space: power'
+  defaultHint: "AIM WITH MOUSE    LEFT CLICK TO LOCK    SPACE FOR POWER"
   onConfirm:
     m_PersistentCalls:
       m_Calls: []
@@ -7695,17 +7695,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Reflector
-
-    Bouncy spoon
-
-    Ball bounces harder off walls.
-
-    Easy
-    course: Reflect'
+  m_text: "REFLECTOR\nBOUNCY SPOON\nBANK SHOTS OFF WALLS\nEASY COURSE ON REFLECT"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
+  m_sharedMaterial: {fileID: 1140813912902175123, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7848,7 +7841,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -170, y: -313}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 260, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &193555279
 MonoBehaviour:
@@ -8808,7 +8801,7 @@ MonoBehaviour:
   shotDirection: {x: 1, y: 0, z: 0}
   retryFromTee: 1
   minAimBounces: 0
-  hint: 'Mouse: turn the board    Left click: confirm    Space: power'
+  hint: 'TURN THE OBSTACLE    LEFT CLICK TO LOCK    SPACE FOR POWER'
   cup: {fileID: 0}
   cupMoveShape: 0
   railStart: {fileID: 0}
@@ -8978,11 +8971,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Attacker \nLong spoon\nHits the farthest. \nHarder to control up close.\nEasy
-    course: Attack"
+  m_text: "ATTACKER\nLONG SPOON\nPOWERFUL LONG SHOTS\nTRICKY UP CLOSE\nEASY COURSE ON ATTACK"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
+  m_sharedMaterial: {fileID: 1140813912902175123, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10497,7 +10489,7 @@ MonoBehaviour:
   shotDirection: {x: 1, y: 0, z: 0}
   retryFromTee: 1
   minAimBounces: 1
-  hint: 'Mouse: turn the board    Left click: confirm    Space: power'
+  hint: 'TURN THE OBSTACLE    LEFT CLICK TO LOCK    SPACE FOR POWER'
   cup: {fileID: 1570404447}
   cupMoveShape: 0
   railStart: {fileID: 0}
@@ -10688,7 +10680,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 9, y: -510}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 280, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &404835200
 MonoBehaviour:
@@ -13483,7 +13475,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -346}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 1020, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &616756817
 MonoBehaviour:
@@ -13505,10 +13497,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
+  m_sharedMaterial: {fileID: 1140813912902175123, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13539,7 +13531,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -13898,7 +13890,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -167, y: -361}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 245, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &668696372
 MonoBehaviour:
@@ -19037,8 +19029,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
+  m_sharedMaterial: {fileID: 1140813912902175123, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -19392,17 +19384,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Defender
-
-    Short spoon
-
-    Short range, very precise power.
-
-    Easy
-    course: Defense'
+  m_text: "DEFENDER\nSHORT SPOON\nSHORT RANGE\nPRECISE POWER\nEASY COURSE ON DEFEND"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
+  m_sharedMaterial: {fileID: 1140813912902175123, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -25677,7 +25662,7 @@ MonoBehaviour:
   shotDirection: {x: 1, y: 0, z: 0.5}
   retryFromTee: 1
   minAimBounces: 0
-  hint: 'Mouse: move the cup    Left click: confirm    Space: power'
+  hint: 'MOVE THE CUP    LEFT CLICK TO LOCK    SPACE FOR POWER'
   cup: {fileID: 2040665086}
   cupMoveShape: 0
   railStart: {fileID: 1421337424}
@@ -26310,7 +26295,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 481}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 780, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &924400346
 MonoBehaviour:
@@ -26332,10 +26317,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
+  m_sharedMaterial: {fileID: 1140813912902175123, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -26366,7 +26351,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -31377,17 +31362,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'P1: [ A / S / D ]   P2: [ J / K / L ]
-
-    Choose in secret
-
-    Attack
-    > Defense > Reflect > Attack
-
-    Counter + hole = +10'
+  m_text: "P1  A S D      P2  J K L\nCHOOSE IN SECRET\nATTACK BEATS DEFEND\nDEFEND BEATS REFLECT\nREFLECT BEATS ATTACK\nCOUNTER AND SCORE FOR 10 EXTRA DMG"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
+  m_sharedMaterial: {fileID: 1140813912902175123, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -31521,7 +31499,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "P1  A / S / D        P2  J / K / L \nBOTH READY   PRESS ENTER!"
+  m_text: "P1  A S D      P2  J K L\nBOTH READY   PRESS ENTER!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
   m_sharedMaterial: {fileID: 1140813912902175123, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
@@ -31836,10 +31814,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
+  m_sharedMaterial: {fileID: 1140813912902175123, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -33369,20 +33347,11 @@ MonoBehaviour:
   tutorialTitleText: {fileID: 924400346}
   tutorialInstructionText: {fileID: 616756817}
   tutorialResultText: {fileID: 1925777487}
-  tutorialTitleFormat: 'Practice: {0} - {1}'
+  tutorialTitleFormat: "PRACTICE  {0}  {1}"
   tutorialInstructions:
-  - 'Attack: aim freely.
-
-    Move the mouse to aim, left click to confirm, then
-    press Space to set the power.'
-  - 'Defense: the shot direction is fixed.
-
-    Move the mouse to put the cup on
-    the ball''s path, left click, then press Space.'
-  - 'Reflect: the shot direction and the cup are fixed.
-
-    Move the mouse to turn
-    the board, left click, then press Space.'
+  - "AIM WITH THE MOUSE\nLEFT CLICK TO LOCK AIM\nPRESS SPACE TO SET POWER"
+  - "THE SHOT DIRECTION IS FIXED\nMOVE THE CUP INTO THE BALL PATH\nLEFT CLICK TO LOCK IT\nPRESS SPACE TO SET POWER"
+  - "THE SHOT AND CUP ARE FIXED\nTURN THE OBSTACLE TO LINE UP A BOUNCE\nLEFT CLICK TO LOCK IT\nPRESS SPACE TO SET POWER"
   hpBarSpeed: 1.5
   trailDelay: 0.4
   trailSpeed: 0.6
@@ -33392,66 +33361,38 @@ MonoBehaviour:
   - P1
   - P2
   actionNames:
-  - Attack
-  - Defend
-  - Reflect
+  - "ATTACK"
+  - "DEFEND"
+  - "REFLECT"
   resultNames:
-  - Hole-in-One!
-  - Two Strokes
-  - Failed
+  - "HOLE IN ONE!"
+  - "TWO STROKES"
+  - "MISS!"
   resultColors:
   - {r: 1, g: 0.8, b: 0.2, a: 1}
   - {r: 0.45, g: 0.85, b: 1, a: 1}
   - {r: 0.75, g: 0.75, b: 0.75, a: 1}
   winFormats:
-  - Draw
-  - '{0} wins by HP'
-  - '{0} wins by holes made'
-  - '{0} wins by strokes'
-  roundFormat: Round {0}/{1}
-  lockedLabel: LOCKED
-  choosingLabel: Choosing...
-  bonusFormat: 'Bonus action: {0}'
-  lastActionFormat: 'Last round: {0}'
-  revealActionFormat: '{0}
-
-    {1}'
-  revealCounterFormat: '{0}''s {1} counters {2}!
-
-    Hole the ball for +10 damage'
-  revealSameFormat: 'Both chose {0}
-
-    No counter this round'
-  preGolfFormat: '{0} ({1})
-
-    {2}
-
-
-    Press Enter'
-  golfInfoFormat: '{0} - {1}'
-  strokesFormat: Strokes {0}/{1}
-  turnResultFormat: '{0}
-
-    {1}'
-  counterFormat: 'COUNTER!  +10
-
-    {0}: {1} beats {2}'
-  counterLabel: Counter!
-  damageFormat: -{0}
-  roundColumnFormat: '{0}
-
-    {1}  x{2:0.#}
-
-    Dealt {3}
-
-    Block {4:P0}
-
-    Reflect
-    {5}
-
-    Taken {6}
-
-    HP {7}'
+  - "DRAW"
+  - "{0} WINS ON HP"
+  - "{0} WINS ON HOLES"
+  - "{0} WINS ON STROKES"
+  roundFormat: "ROUND {0} OF {1}"
+  lockedLabel: "LOCKED"
+  choosingLabel: "CHOOSING"
+  bonusFormat: "BONUS MOVE  {0}"
+  lastActionFormat: "LAST MOVE  {0}"
+  revealActionFormat: "{0}\n{1}"
+  revealCounterFormat: "{0} COUNTERS!\n{1} BEATS {2}\nHOLE OUT FOR 10 BONUS DAMAGE"
+  revealSameFormat: "BOTH CHOSE {0}\nNO COUNTER"
+  preGolfFormat: "{0}  {1}\n{2}\n\nPRESS ENTER"
+  golfInfoFormat: "{0}  {1}"
+  strokesFormat: "STROKES {0} OF {1}"
+  turnResultFormat: "{0}\n{1}"
+  counterFormat: "10 BONUS DAMAGE!\n{0}  {1} BEATS {2}"
+  counterLabel: "COUNTER!"
+  damageFormat: "{0} DAMAGE"
+  roundColumnFormat: "{0}\n{1}\nDEALT {3}\nTAKEN {6}\nHP {7}"
 --- !u!1001 &1524848359
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34057,7 +33998,7 @@ MonoBehaviour:
   shotDirection: {x: 1, y: 0, z: 0}
   retryFromTee: 1
   minAimBounces: 1
-  hint: 'Mouse: turn the board    Left click: confirm    Space: power'
+  hint: 'TURN THE OBSTACLE    LEFT CLICK TO LOCK    SPACE FOR POWER'
   cup: {fileID: 2128224703}
   cupMoveShape: 0
   railStart: {fileID: 0}
@@ -34774,7 +34715,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -546}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 320, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1559919378
 MonoBehaviour:
@@ -40038,7 +39979,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -0, y: -41}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 350, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1631517834
 MonoBehaviour:
@@ -40094,7 +40035,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -40354,7 +40295,7 @@ MonoBehaviour:
   shotDirection: {x: 1, y: 0, z: 0.5}
   retryFromTee: 1
   minAimBounces: 0
-  hint: 'Mouse: move the cup    Left click: confirm    Space: power'
+  hint: 'MOVE THE CUP    LEFT CLICK TO LOCK    SPACE FOR POWER'
   cup: {fileID: 1231406754}
   cupMoveShape: 0
   railStart: {fileID: 188722576}
@@ -40627,7 +40568,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1049, y: -289}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 260, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1686757901
 MonoBehaviour:
@@ -40982,8 +40923,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
+  m_sharedMaterial: {fileID: 1140813912902175123, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -41150,8 +41091,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: P1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
+  m_sharedMaterial: {fileID: 1140813912902175123, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -41488,7 +41429,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 233, y: -363}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1714075952
 MonoBehaviour:
@@ -41748,8 +41689,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 62
+  m_fontSizeBase: 62
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -42543,7 +42484,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1071, y: -339}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 245, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1772514697
 MonoBehaviour:
@@ -48784,10 +48725,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
+  m_sharedMaterial: {fileID: 1140813912902175123, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -49364,7 +49305,7 @@ MonoBehaviour:
   shotDirection: {x: 1, y: 0, z: 0.5}
   retryFromTee: 1
   minAimBounces: 0
-  hint: 'Mouse: move the cup    Left click: confirm    Space: power'
+  hint: 'MOVE THE CUP    LEFT CLICK TO LOCK    SPACE FOR POWER'
   cup: {fileID: 760620037}
   cupMoveShape: 0
   railStart: {fileID: 1184432552}
@@ -55627,7 +55568,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -485, y: -257}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 550, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2082782547
 MonoBehaviour:
@@ -55649,10 +55590,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "1 Attacker    2 Defender    3 Reflector    \nEsc: back to maid select"
+  m_text: "1 ATTACKER    2 DEFENDER    3 REFLECTOR\nESC TO RETURN TO MAID SELECT"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
+  m_sharedMaterial: {fileID: 1140813912902175123, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

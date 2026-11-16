@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82dc4c59adb629c42b86dcbd48ab5b30, type: 3}
   m_Name: Attacker
   m_EditorClassIdentifier: Assembly-CSharp::ClassConfig
-  displayName: Attacker
-  description: Long spoon. Big power for long shots, harder to control up close.
-    Easy course on Attack.
+  displayName: ATTACKER
+  description: "LONG SPOON FOR POWERFUL LONG SHOTS\nHARDER TO CONTROL UP CLOSE\nEASY COURSE ON ATTACK"
   damageModifier: 1
   defenseModifier: 1
   reflectModifier: 1

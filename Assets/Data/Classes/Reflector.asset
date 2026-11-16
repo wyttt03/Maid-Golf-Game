@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82dc4c59adb629c42b86dcbd48ab5b30, type: 3}
   m_Name: Reflector
   m_EditorClassIdentifier: Assembly-CSharp::ClassConfig
-  displayName: Reflector
-  description: Short spoon. Bouncy ball, great for ricochets off walls. Easy course
-    on Reflect.
+  displayName: REFLECTOR
+  description: "SHORT SPOON FOR BOUNCY SHOTS\nBANK THE BALL OFF WALLS\nEASY COURSE ON REFLECT"
   damageModifier: 1
   defenseModifier: 1
   reflectModifier: 1

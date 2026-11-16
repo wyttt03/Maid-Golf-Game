@@ -49,7 +49,7 @@ public class ShotController : MonoBehaviour
     [Header("Rules")]
     public int maxStrokes = 2;
     [Tooltip("Hint shown on courses without their own hint (normal golf).")]
-    public string defaultHint = "Mouse: aim    Left click: confirm    Space: shoot    Right click: cancel";
+    public string defaultHint = "AIM WITH MOUSE    LEFT CLICK TO LOCK    SPACE TO SHOOT    RIGHT CLICK TO CANCEL";
 
     [Header("Sound hooks")]
     public UnityEvent onConfirm;

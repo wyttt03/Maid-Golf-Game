@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82dc4c59adb629c42b86dcbd48ab5b30, type: 3}
   m_Name: Defender
   m_EditorClassIdentifier: Assembly-CSharp::ClassConfig
-  displayName: Defender
-  description: Big round spoon. Slow, steady roll that stops quickly. Easy course
-    on Defend.
+  displayName: DEFENDER
+  description: "BIG ROUND SPOON FOR A STEADY ROLL\nTHE BALL STOPS QUICKLY\nEASY COURSE ON DEFEND"
   damageModifier: 1
   defenseModifier: 1
   reflectModifier: 1

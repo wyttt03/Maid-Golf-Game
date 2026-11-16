@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ParTea/Class Config")]
 public class ClassConfig : ScriptableObject
 {
-    public string displayName = "Attacker";
+    public string displayName = "ATTACKER";
     [TextArea(2, 5)] public string description;
 
     [Header("Combat modifiers (1 = no change)")]
