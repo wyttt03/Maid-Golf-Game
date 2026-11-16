@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 // Plays the chibi battle sequence on the stage:
 // 1) both maids cast at the same time, 2) both action particles play,
-// 3) Attack and Reflect maids play Hit, Defend maids go back to Idle.
+// 3) maids that cast Defend skip the hit reaction.
 // Each slot holds one child per class; only the chosen one is active.
 public class BattleStage : MonoBehaviour
 {
@@ -43,7 +43,7 @@ public class BattleStage : MonoBehaviour
     [Header("Rules")]
     [Tooltip("On: a maid who missed both strokes still casts. Off: she stays idle and plays no particles.")]
     public bool castOnMiss = false;
-    [Tooltip("On: Attack / Reflect maids play Hit only if they took damage. Off: always, by matchup.")]
+    [Tooltip("Require damage for a hit reaction. Maids that cast Defend skip the reaction either way.")]
     public bool hitOnlyWhenDamaged = true;
 
     [Header("Sound hooks")]
@@ -53,17 +53,17 @@ public class BattleStage : MonoBehaviour
     public UnityEvent onParticles;
     public UnityEvent onHit;
 
-    CombatAction action1, action2;
+    bool defended1, defended2;
 
     // Steps 1 and 2: cast together, then particles together.
     public IEnumerator PlayActions(CombatAction a1, bool holed1, CombatAction a2, bool holed2,
         bool damaged1 = true, bool damaged2 = true)
     {
         ClearBolts();
-        action1 = a1;
-        action2 = a2;
         bool cast1 = holed1 || castOnMiss;
         bool cast2 = holed2 || castOnMiss;
+        defended1 = cast1 && a1 == CombatAction.Defend;
+        defended2 = cast2 && a2 == CombatAction.Defend;
         if (!cast1 && !cast2) yield break;
 
         // 1. Cast
@@ -124,12 +124,12 @@ public class BattleStage : MonoBehaviour
         }
     }
 
-    // Step 3: Defend maids stay idle, Attack and Reflect maids take the hit.
+    // Step 3: only a defense that was actually cast suppresses the hit reaction.
     // damaged1 / damaged2 = that player took damage this round.
     public IEnumerator PlayHits(bool damaged1, bool damaged2)
     {
-        bool hit1 = action1 != CombatAction.Defend && (damaged1 || !hitOnlyWhenDamaged);
-        bool hit2 = action2 != CombatAction.Defend && (damaged2 || !hitOnlyWhenDamaged);
+        bool hit1 = !defended1 && (damaged1 || !hitOnlyWhenDamaged);
+        bool hit2 = !defended2 && (damaged2 || !hitOnlyWhenDamaged);
 
         if (!earlyHit1) Trigger(p1Slot, hit1 ? hitTrigger : idleTrigger);
         if (!earlyHit2) Trigger(p2Slot, hit2 ? hitTrigger : idleTrigger);
