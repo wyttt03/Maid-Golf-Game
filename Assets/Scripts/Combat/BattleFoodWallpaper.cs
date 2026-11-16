@@ -14,12 +14,27 @@ public sealed class BattleFoodWallpaper : MonoBehaviour
         public float artworkAspect;
     }
 
-    [SerializeField] Camera golfCamera;
+    [Tooltip("底板占整个屏幕高度的比例。0.333 表示下面三分之一。")]
+    [Range(0f, 1f), SerializeField] float bottomSplit = 0.333f;
     [SerializeField] Texture2D gradientStrip;
     [Min(1f), SerializeField] float gradientCycleSeconds = 9f;
     [SerializeField] Food[] foods;
     [Range(0f, 1f), SerializeField] float foodOpacity = .42f;
     [Min(0f), SerializeField] float scrollSpeed = 16f;
+
+    [Header("Wallpaper Frame")]
+    [Tooltip("底部横幅。形状内部实心，外部透明。")]
+    [SerializeField] Sprite boardMask;
+    [Tooltip("与 Board Mask 使用同一裁切范围，只有描边和装饰可见。")]
+    [SerializeField] Sprite boardOutline;
+    [Tooltip("留空时黑边在舞台人物后面。指定主界面的 Overlay Canvas 会把黑边画到人物前面。")]
+    [SerializeField] Canvas outlineCanvas;
+    [Tooltip("拖入中央蝴蝶结的透明 Sprite。它会和甜品背板一起显示在舞台人物后面。")]
+    [SerializeField] Sprite boardBow;
+    [Tooltip("蝴蝶结顶边在背板内的高度。0 是底部，1 是顶部，调大可上移。")]
+    [Range(0f, 1f), SerializeField] float bowTop = .85f;
+    [Tooltip("蝴蝶结宽度占背板宽度的比例，图片自动保持原比例。")]
+    [Range(.01f, .3f), SerializeField] float bowWidthFraction = .074f;
 
     const float Height = 300f;
     const float Margin = 64f;
@@ -36,6 +51,9 @@ public sealed class BattleFoodWallpaper : MonoBehaviour
 
     Camera stage;
     RectTransform panel;
+    RectTransform content;
+    RectTransform hudOutline;
+    Image bow;
     RawImage gradient;
     float gradientPhase;
     Tile[] tiles;
@@ -44,10 +62,10 @@ public sealed class BattleFoodWallpaper : MonoBehaviour
 
     void Start()
     {
-        if (!golfCamera || !gradientStrip || foods == null || foods.Length == 0 ||
+        if (!gradientStrip || foods == null || foods.Length == 0 ||
             Array.Exists(foods, f => !f.texture || f.uv.width <= 0 || f.uv.height <= 0 || f.artworkAspect <= 0))
         {
-            Debug.LogWarning("Battle food wallpaper is missing its viewport, gradient or food images.", this);
+            Debug.LogWarning("Battle food wallpaper is missing its gradient or food images.", this);
             enabled = false;
             return;
         }
@@ -61,31 +79,119 @@ public sealed class BattleFoodWallpaper : MonoBehaviour
         canvas.renderMode = RenderMode.WorldSpace;
         canvas.worldCamera = stage;
         canvas.sortingOrder = -32000;
-        board.AddComponent<RectMask2D>();
+        CreateFrame();
+
         var paper = new GameObject("Scrolling gradient", typeof(RectTransform), typeof(RawImage));
         paper.layer = board.layer;
-        paper.transform.SetParent(panel, false);
+        paper.transform.SetParent(content, false);
         paper.transform.localRotation = Quaternion.Euler(0f, 0f, -45f);
         gradient = paper.GetComponent<RawImage>();
         gradient.raycastTarget = false;
         gradient.texture = gradientStrip;
+        if (boardBow)
+        {
+            // The static bow belongs to the stage, outside the moving, masked content.
+            bow = CreateFrameImage("Food bow", panel, boardBow);
+            var rect = bow.rectTransform;
+            rect.anchorMin = rect.anchorMax = new Vector2(.5f, 0f);
+            rect.pivot = new Vector2(.5f, 1f);
+        }
         Advance(0f);
+    }
+
+    void CreateFrame()
+    {
+        content = panel;
+        if (!boardMask)
+        {
+            panel.gameObject.AddComponent<RectMask2D>();
+            return;
+        }
+
+        var shape = CreateFrameImage("Food mask", panel, boardMask);
+        content = shape.rectTransform;
+        shape.gameObject.AddComponent<Mask>().showMaskGraphic = false;
+
+        if (!boardOutline) return;
+        if (outlineCanvas && outlineCanvas.isRootCanvas &&
+            outlineCanvas.renderMode == RenderMode.ScreenSpaceOverlay &&
+            outlineCanvas.targetDisplay == stage.targetDisplay)
+        {
+            hudOutline = CreateFrameImage("Food outline", outlineCanvas.transform, boardOutline).rectTransform;
+            hudOutline.SetAsFirstSibling();
+        }
+        else
+        {
+            // The outline is a later sibling of the mask, so its outer stroke stays visible.
+            CreateFrameImage("Food outline", panel, boardOutline);
+        }
+    }
+
+    static Image CreateFrameImage(string objectName, Transform parent, Sprite sprite)
+    {
+        var obj = new GameObject(objectName, typeof(RectTransform), typeof(Image));
+        obj.layer = parent.gameObject.layer;
+        var image = obj.GetComponent<Image>();
+        var rect = image.rectTransform;
+        rect.SetParent(parent, false);
+        rect.anchorMin = Vector2.zero;
+        rect.anchorMax = Vector2.one;
+        rect.offsetMin = Vector2.zero;
+        rect.offsetMax = Vector2.zero;
+        image.sprite = sprite;
+        image.type = Image.Type.Simple;
+        image.preserveAspect = false;
+        image.raycastTarget = false;
+        return image;
     }
 
     float Range(float low, float high) => Mathf.Lerp(low, high, (float)random.NextDouble());
 
-    void FitPanel()
+    void FitBow(float panelWidth)
     {
+        float bowWidth = panelWidth * bowWidthFraction;
+        Rect sprite = bow.sprite.rect;
+        var size = new Vector2(bowWidth, bowWidth * sprite.height / sprite.width);
+        var top = new Vector2(0f, Height * bowTop);
+        var rect = bow.rectTransform;
+        if (rect.sizeDelta != size) rect.sizeDelta = size;
+        if (rect.anchoredPosition != top) rect.anchoredPosition = top;
+    }
+
+    bool FitPanel()
+    {
+        // The wallpaper always fills the bottom part of the stage camera.
+        // The split is set here instead of being read from the golf camera,
+        // which is now an overlay camera without its own viewport rect.
+        Rect viewport = stage.rect;
+        float split = bottomSplit;
+        bool hasArea = stage.pixelWidth > 0 && stage.pixelHeight * split >= 1f;
+        if (hudOutline)
+        {
+            bool visible = hasArea && stage.isActiveAndEnabled && panel.gameObject.activeInHierarchy;
+            if (hudOutline.gameObject.activeSelf != visible)
+                hudOutline.gameObject.SetActive(visible);
+            // A root overlay Canvas uses the same normalized display coordinates as Camera.rect.
+            Vector2 min = viewport.min;
+            Vector2 max = new Vector2(viewport.xMax, Mathf.Lerp(viewport.yMin, viewport.yMax, split));
+            if (hudOutline.anchorMin != min) hudOutline.anchorMin = min;
+            if (hudOutline.anchorMax != max) hudOutline.anchorMax = max;
+        }
+        if (!hasArea)
+        {
+            panel.localScale = Vector3.zero;
+            return false;
+        }
+
         float depth = Mathf.Lerp(stage.nearClipPlane, stage.farClipPlane, .75f);
-        // Keep the same split even when the upper camera is hidden during combat.
-        float split = Mathf.InverseLerp(stage.rect.yMin, stage.rect.yMax, golfCamera.rect.yMin);
         var a = transform.InverseTransformPoint(stage.ViewportToWorldPoint(new Vector3(0, 0, depth)));
         var b = transform.InverseTransformPoint(stage.ViewportToWorldPoint(new Vector3(1, split, depth)));
         float scale = Mathf.Max(.00001f, (b.y - a.y) / Height);
         float newWidth = (b.x - a.x) / scale;
         panel.localPosition = (a + b) * .5f;
         panel.localScale = new Vector3(scale, scale, scale);
-        if (Mathf.Abs(width - newWidth) < .01f && tiles != null) return;
+        if (bow) FitBow(newWidth);
+        if (Mathf.Abs(width - newWidth) < .01f && tiles != null) return true;
 
         float oldSpan = width + 2f * Margin;
         width = newWidth;
@@ -97,7 +203,7 @@ public sealed class BattleFoodWallpaper : MonoBehaviour
         {
             float ratio = (width + 2f * Margin) / oldSpan;
             foreach (var tile in tiles) tile.position.x *= ratio;
-            return;
+            return true;
         }
 
         if (tiles != null)
@@ -110,19 +216,22 @@ public sealed class BattleFoodWallpaper : MonoBehaviour
         tiles = new Tile[Rows * columns];
         Vector2 span = new Vector2(width, Height) + Vector2.one * (2f * Margin);
         for (int row = 0; row < Rows; row++)
-        for (int column = 0; column < columns; column++)
-        {
-            var item = new GameObject("Food", typeof(RectTransform), typeof(RawImage));
-            item.layer = panel.gameObject.layer;
-            item.transform.SetParent(panel, false);
-            var tile = new Tile { image = item.GetComponent<RawImage>() };
-            tile.image.raycastTarget = false;
-            float x = (column + .25f + (row % 2) * .5f + Range(-.12f, .12f)) * span.x / columns;
-            float y = (row + .5f + Range(-.14f, .14f)) * span.y / Rows;
-            tile.position = new Vector2(x - span.x / 2f, y - span.y / 2f);
-            PickFood(tile);
-            tiles[row * columns + column] = tile;
-        }
+            for (int column = 0; column < columns; column++)
+            {
+                var item = new GameObject("Food", typeof(RectTransform), typeof(RawImage));
+                item.layer = panel.gameObject.layer;
+                item.transform.SetParent(content, false);
+                var tile = new Tile { image = item.GetComponent<RawImage>() };
+                tile.image.raycastTarget = false;
+                float x = (column + .25f + (row % 2) * .5f + Range(-.12f, .12f)) * span.x / columns;
+                float y = (row + .5f + Range(-.14f, .14f)) * span.y / Rows;
+                tile.position = new Vector2(x - span.x / 2f, y - span.y / 2f);
+                PickFood(tile);
+                tiles[row * columns + column] = tile;
+            }
+        // Without a shaped mask the tiles and bow share a parent.
+        if (bow && content == panel) bow.transform.SetAsLastSibling();
+        return true;
     }
 
     void PickFood(Tile tile)
@@ -143,7 +252,7 @@ public sealed class BattleFoodWallpaper : MonoBehaviour
 
     void Advance(float delta)
     {
-        FitPanel();
+        if (!FitPanel()) return;
         gradientPhase = Mathf.Repeat(gradientPhase + delta / Mathf.Max(1f, gradientCycleSeconds), 1f);
         // Sample the centre row. Half the strip is one complete palette cycle.
         // Increasing U on a -45 degree plane makes each band travel up and left.
@@ -173,8 +282,18 @@ public sealed class BattleFoodWallpaper : MonoBehaviour
         }
     }
 
-    void OnDisable() { if (panel) panel.gameObject.SetActive(false); }
-    void OnEnable() { if (panel) panel.gameObject.SetActive(true); }
-    void OnDestroy() { if (panel) Destroy(panel.gameObject); }
-}
+    void SetWallpaperVisible(bool visible)
+    {
+        if (panel) panel.gameObject.SetActive(visible);
+        if (hudOutline) hudOutline.gameObject.SetActive(visible && stage.isActiveAndEnabled);
+    }
 
+    void OnDisable() => SetWallpaperVisible(false);
+    void OnEnable() => SetWallpaperVisible(true);
+
+    void OnDestroy()
+    {
+        if (panel) Destroy(panel.gameObject);
+        if (hudOutline) Destroy(hudOutline.gameObject);
+    }
+}

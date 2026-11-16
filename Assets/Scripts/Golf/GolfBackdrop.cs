@@ -4,11 +4,14 @@ using UnityEngine;
 [DisallowMultipleComponent, RequireComponent(typeof(Camera))]
 public sealed class GolfBackdrop : MonoBehaviour
 {
+    [SerializeField] Camera stageCamera;
+    [SerializeField] string stageLayerName = "Stage";
     [SerializeField] Sprite gradient;
     [SerializeField] Sprite[] shapes;
     [SerializeField] Material unlitMaterial;
     [Min(1f), SerializeField] float cycleSeconds = 18f;
     [Range(6, 100), SerializeField] int particleCount = 48;
+    [SerializeField] int sortingOrderBase = -32001;
 
     sealed class Mote
     {
@@ -18,7 +21,8 @@ public sealed class GolfBackdrop : MonoBehaviour
     }
 
     readonly System.Random random = new System.Random();
-    Camera golfCamera;
+    Camera target;
+    int stageLayer;
     GameObject visuals;
     SpriteRenderer backdrop;
     Mote[] motes;
@@ -26,6 +30,15 @@ public sealed class GolfBackdrop : MonoBehaviour
 
     void Start()
     {
+        target = stageCamera ? stageCamera : GetComponent<Camera>();
+        stageLayer = LayerMask.NameToLayer(stageLayerName);
+        if (stageLayer < 0)
+        {
+            Debug.LogWarning("Layer '" + stageLayerName + "' not found.", this);
+            enabled = false;
+            return;
+        }
+
         if (!gradient || !unlitMaterial || shapes == null || shapes.Length == 0 ||
             Array.Exists(shapes, shape => !shape))
         {
@@ -34,19 +47,21 @@ public sealed class GolfBackdrop : MonoBehaviour
             return;
         }
 
-        golfCamera = GetComponent<Camera>();
+        // Parent to the stage camera so the planes follow its full-screen viewport.
         visuals = new GameObject("Golf background");
-        visuals.transform.SetParent(transform, false);
-        backdrop = MakeRenderer("Gradient", -32001);
+        visuals.layer = stageLayer;
+        visuals.transform.SetParent(target.transform, false);
+        backdrop = MakeRenderer("Gradient", sortingOrderBase);
         backdrop.sprite = gradient;
         motes = new Mote[particleCount];
         for (int i = 0; i < motes.Length; i++)
         {
-            var mote = new Mote { renderer = MakeRenderer("Floating shape", -32000) };
+            var mote = new Mote { renderer = MakeRenderer("Floating shape", sortingOrderBase + 1) };
             Spawn(mote);
             mote.age = (i + Range(0f, 1f)) / motes.Length * mote.lifetime;
             motes[i] = mote;
         }
+        visuals.SetActive(isActiveAndEnabled);
         Advance(0f);
     }
 
@@ -54,7 +69,7 @@ public sealed class GolfBackdrop : MonoBehaviour
     {
         var part = new GameObject(label);
         part.transform.SetParent(visuals.transform, false);
-        part.layer = LayerMask.NameToLayer("TransparentFX");
+        part.layer = stageLayer;
         var renderer = part.AddComponent<SpriteRenderer>();
         renderer.sharedMaterial = unlitMaterial;
         renderer.sortingOrder = order;
@@ -65,7 +80,7 @@ public sealed class GolfBackdrop : MonoBehaviour
 
     void Spawn(Mote mote)
     {
-        float aspect = golfCamera.aspect;
+        float aspect = target.aspect;
         float edge = Range(0f, 2f * (aspect + 1f));
         if (edge < aspect)
             mote.start = new Vector2(edge / aspect, 1.012f);
@@ -87,19 +102,20 @@ public sealed class GolfBackdrop : MonoBehaviour
         mote.renderer.sprite = shapes[random.Next(shapes.Length)];
     }
 
-    void LateUpdate() => Advance(Time.deltaTime);
+    void LateUpdate()
+    {
+        if (visuals) Advance(Time.deltaTime);
+    }
 
     void Advance(float elapsed)
     {
         phase = Mathf.Repeat(phase + elapsed / Mathf.Max(1f, cycleSeconds), 1f);
-        // Both planes follow this camera's own viewport, behind the playable course.
-        float far = golfCamera.farClipPlane;
-        var gradientFrame = FrameAt(Mathf.Lerp(golfCamera.nearClipPlane, far, .85f));
-        var shapeFrame = FrameAt(Mathf.Lerp(golfCamera.nearClipPlane, far, .80f));
+        float far = target.farClipPlane;
+        var gradientFrame = FrameAt(Mathf.Lerp(target.nearClipPlane, far, .85f));
+        var shapeFrame = FrameAt(Mathf.Lerp(target.nearClipPlane, far, .80f));
         var size = gradient.bounds.size;
         backdrop.transform.localScale = new Vector3(4f * gradientFrame.size.x / size.x,
             1.01f * gradientFrame.size.y / size.y, 1f);
-        // The strip contains two identical periods. Moving half its width wraps seamlessly.
         backdrop.transform.localPosition = gradientFrame.center +
             Vector3.right * ((1f - 2f * phase) * gradientFrame.size.x);
 
@@ -131,8 +147,9 @@ public sealed class GolfBackdrop : MonoBehaviour
 
     Bounds FrameAt(float depth)
     {
-        var a = transform.InverseTransformPoint(golfCamera.ViewportToWorldPoint(new Vector3(0, 0, depth)));
-        var b = transform.InverseTransformPoint(golfCamera.ViewportToWorldPoint(new Vector3(1, 1, depth)));
+        var tr = target.transform;
+        var a = tr.InverseTransformPoint(target.ViewportToWorldPoint(new Vector3(0, 0, depth)));
+        var b = tr.InverseTransformPoint(target.ViewportToWorldPoint(new Vector3(1, 1, depth)));
         var bounds = new Bounds();
         bounds.SetMinMax(Vector3.Min(a, b), Vector3.Max(a, b));
         return bounds;
@@ -142,4 +159,3 @@ public sealed class GolfBackdrop : MonoBehaviour
     void OnDisable() { if (visuals) visuals.SetActive(false); }
     void OnDestroy() { if (visuals) Destroy(visuals); }
 }
-
