@@ -141,7 +141,8 @@ public class MatchManager : MonoBehaviour
             if (stage)
                 yield return stage.PlayActions(
                     P1.action, P1.result != StrokeResult.Failed,
-                    P2.action, P2.result != StrokeResult.Failed);
+                    P2.action, P2.result != StrokeResult.Failed,
+                    LastOutcome.final1 > 0, LastOutcome.final2 > 0);
 
             ApplyDamage();
             onRoundResolved.Invoke();

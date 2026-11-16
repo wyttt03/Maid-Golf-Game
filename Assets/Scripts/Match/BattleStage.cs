@@ -16,6 +16,12 @@ public class BattleStage : MonoBehaviour
     public ParticleSystem[] p1Effects = new ParticleSystem[3];
     public ParticleSystem[] p2Effects = new ParticleSystem[3];
 
+    [Header("Maid magic")]
+    public MaidMagic magic = new MaidMagic();
+    MaidBolt bolt1, bolt2;
+    MaidShield shield1, shield2;
+    bool earlyHit1, earlyHit2, returned1, returned2;
+
     [Header("Animator trigger names")]
     public string idleTrigger = "Idle";
     public string readyTrigger = "Ready";
@@ -50,8 +56,10 @@ public class BattleStage : MonoBehaviour
     CombatAction action1, action2;
 
     // Steps 1 and 2: cast together, then particles together.
-    public IEnumerator PlayActions(CombatAction a1, bool holed1, CombatAction a2, bool holed2)
+    public IEnumerator PlayActions(CombatAction a1, bool holed1, CombatAction a2, bool holed2,
+        bool damaged1 = true, bool damaged2 = true)
     {
+        ClearBolts();
         action1 = a1;
         action2 = a2;
         bool cast1 = holed1 || castOnMiss;
@@ -61,13 +69,59 @@ public class BattleStage : MonoBehaviour
         // 1. Cast
         if (cast1) { Trigger(p1Slot, ActionTrigger(a1)); ActionEvent(a1).Invoke(); }
         if (cast2) { Trigger(p2Slot, ActionTrigger(a2)); ActionEvent(a2).Invoke(); }
-        yield return new WaitForSeconds(castTime);
+        returned1 = cast2 && a2 == CombatAction.Reflect;
+        returned2 = cast1 && a1 == CombatAction.Reflect;
+        float lead = returned1 || returned2 ? Mathf.Min(MaidShield.CastLead, Mathf.Max(0f, castTime)) : 0f;
+        yield return new WaitForSeconds(castTime - lead);
 
-        // 2. Particles
-        if (cast1) PlayEffect(p1Effects, a1);
-        if (cast2) PlayEffect(p2Effects, a2);
+        var maid1 = p1Slot ? p1Slot.GetComponentInChildren<Animator>() : null;
+        var maid2 = p2Slot ? p2Slot.GetComponentInChildren<Animator>() : null;
+        if (returned2) shield1 = RaiseShield(maid1, p1Slot, p2Slot);
+        if (returned1) shield2 = RaiseShield(maid2, p2Slot, p1Slot);
+        for (float age = 0f; age < lead; age += Time.deltaTime)
+        {
+            shield1?.FollowMaid();
+            shield2?.FollowMaid();
+            shield1?.Draw(age, -1f, false);
+            shield2?.Draw(age, -1f, false);
+            yield return null;
+        }
+
+        // Sample the same contact point as the incoming bolt on this frame.
+        shield1?.FollowMaid();
+        shield2?.FollowMaid();
+        if (cast1) bolt1 = Launch(p1Slot, maid1, p2Slot, maid2, p1Effects, a1, returned1);
+        if (cast2) bolt2 = Launch(p2Slot, maid2, p1Slot, maid1, p2Effects, a2, returned2);
         onParticles.Invoke();
-        yield return new WaitForSeconds(particleTime);
+        if (bolt1 == null && bolt2 == null && shield1 == null && shield2 == null)
+        {
+            yield return new WaitForSeconds(particleTime);
+            yield break;
+        }
+        // Both flights share a clock: a ricochet touches the shield halfway through.
+        float elapsed = 0f;
+        bool shieldContact = false;
+        while (true)
+        {
+            float t = particleTime > 0f ? Mathf.Clamp01(elapsed / particleTime) : 1f;
+            float age = lead + t * particleTime;
+            shield1?.Draw(age, t, bolt2 != null);
+            shield2?.Draw(age, t, bolt1 != null);
+            bolt1?.DrawFlight(t);
+            bolt2?.DrawFlight(t);
+            if (!shieldContact && t >= 0.5f)
+            {
+                shieldContact = true;
+                earlyHit1 = bolt2 != null && returned2 && (damaged1 || !hitOnlyWhenDamaged);
+                earlyHit2 = bolt1 != null && returned1 && (damaged2 || !hitOnlyWhenDamaged);
+                if (earlyHit1) Trigger(p1Slot, hitTrigger);
+                if (earlyHit2) Trigger(p2Slot, hitTrigger);
+                if (earlyHit1 || earlyHit2) onHit.Invoke();
+            }
+            if (t >= 1f) break;
+            yield return null;
+            elapsed += Time.deltaTime;
+        }
     }
 
     // Step 3: Defend maids stay idle, Attack and Reflect maids take the hit.
@@ -77,11 +131,22 @@ public class BattleStage : MonoBehaviour
         bool hit1 = action1 != CombatAction.Defend && (damaged1 || !hitOnlyWhenDamaged);
         bool hit2 = action2 != CombatAction.Defend && (damaged2 || !hitOnlyWhenDamaged);
 
-        Trigger(p1Slot, hit1 ? hitTrigger : idleTrigger);
-        Trigger(p2Slot, hit2 ? hitTrigger : idleTrigger);
+        if (!earlyHit1) Trigger(p1Slot, hit1 ? hitTrigger : idleTrigger);
+        if (!earlyHit2) Trigger(p2Slot, hit2 ? hitTrigger : idleTrigger);
+        if ((hit1 && !earlyHit1) || (hit2 && !earlyHit2)) onHit.Invoke();
 
-        if (hit1 || hit2) onHit.Invoke();
-        yield return new WaitForSeconds(hitTime);
+        if (bolt1 == null && bolt2 == null)
+        {
+            yield return new WaitForSeconds(hitTime);
+            yield break;
+        }
+        for (float elapsed = 0f; elapsed < hitTime; elapsed += Time.deltaTime)
+        {
+            bolt1?.DrawImpact(elapsed, returned1 ? hit1 : hit2);
+            bolt2?.DrawImpact(elapsed, returned2 ? hit2 : hit1);
+            yield return null;
+        }
+        ClearBolts();
     }
 
     public void PlayReady(bool isP1) => Trigger(isP1 ? p1Slot : p2Slot, readyTrigger);
@@ -94,6 +159,38 @@ public class BattleStage : MonoBehaviour
         Trigger(p1Slot, winner == 1 ? winTrigger : loseTrigger);
         Trigger(p2Slot, winner == 2 ? winTrigger : loseTrigger);
     }
+
+    MaidShield RaiseShield(Animator maid, Transform slot, Transform opposite)
+    {
+        var style = magic?.For(maid);
+        if (style == null || !style.shield || !opposite) return null;
+        float incoming = Mathf.Sign(slot.position.x - opposite.position.x);
+        return new MaidShield(magic, style, transform, maid, slot, incoming);
+    }
+
+    MaidBolt Launch(Transform source, Animator caster, Transform target, Animator receiver,
+        ParticleSystem[] fallback, CombatAction action, bool reflect)
+    {
+        var style = magic?.For(caster);
+        if (target && style != null && style.core && style.solid && style.outline &&
+            magic.star && magic.thinStar && magic.cometMist)
+            return new MaidBolt(magic, style, transform, source, caster, target, receiver, reflect);
+        PlayEffect(fallback, action);
+        return null;
+    }
+
+    void ClearBolts()
+    {
+        shield1?.Dispose();
+        shield2?.Dispose();
+        shield1 = shield2 = null;
+        bolt1?.Dispose();
+        bolt2?.Dispose();
+        bolt1 = bolt2 = null;
+        earlyHit1 = earlyHit2 = false;
+    }
+
+    void OnDisable() => ClearBolts();
 
     static void PlayEffect(ParticleSystem[] effects, CombatAction a)
     {
