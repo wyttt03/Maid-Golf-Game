@@ -6838,7 +6838,7 @@ MonoBehaviour:
   ghostLine: {fileID: 669325457}
   powerMarker: {fileID: 1975254755}
   maxStrokes: 2
-  defaultHint: "AIM WITH MOUSE    LEFT CLICK TO LOCK    SPACE FOR POWER"
+  defaultHint: AIM WITH MOUSE    LEFT CLICK TO LOCK    SPACE FOR POWER
   onConfirm:
     m_PersistentCalls:
       m_Calls: []
@@ -7672,7 +7672,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3, y: 1.5999985}
+  m_AnchoredPosition: {x: -8.9, y: -12.8}
   m_SizeDelta: {x: 100, y: -50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &184172100
@@ -7695,7 +7695,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "REFLECTOR\nBOUNCY SPOON\nBANK SHOTS OFF WALLS\nEASY COURSE ON REFLECT"
+  m_text: 'REFLECTOR
+
+
+    BOUNCY SPOON
+
+    BANK SHOTS OFF WALLS
+
+    EASY COURSE
+    ON REFLECT'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
   m_sharedMaterial: {fileID: 1140813912902175123, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
@@ -7761,7 +7769,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 55.79798, y: 0, z: 57.28887, w: -26.029724}
+  m_margin: {x: 63.645103, y: 0, z: 57.28887, w: -4.439434}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -8801,7 +8809,7 @@ MonoBehaviour:
   shotDirection: {x: 1, y: 0, z: 0}
   retryFromTee: 1
   minAimBounces: 0
-  hint: 'TURN THE OBSTACLE    LEFT CLICK TO LOCK    SPACE FOR POWER'
+  hint: TURN THE OBSTACLE    LEFT CLICK TO LOCK    SPACE FOR POWER
   cup: {fileID: 0}
   cupMoveShape: 0
   railStart: {fileID: 0}
@@ -8948,8 +8956,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 3, y: -1}
-  m_SizeDelta: {x: 100, y: -50}
+  m_AnchoredPosition: {x: 5.7, y: -16.4}
+  m_SizeDelta: {x: 51.733, y: -50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &286924592
 MonoBehaviour:
@@ -8971,7 +8979,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "ATTACKER\nLONG SPOON\nPOWERFUL LONG SHOTS\nTRICKY UP CLOSE\nEASY COURSE ON ATTACK"
+  m_text: 'ATTACKER
+
+
+    LONG SPOON
+
+    POWERFUL LONG SHOTS
+
+    TRICKY UP CLOSE
+
+    EASY
+    COURSE ON ATTACK'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
   m_sharedMaterial: {fileID: 1140813912902175123, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
@@ -9037,7 +9055,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 53.683556, y: 0, z: 50.430843, w: -26.029724}
+  m_margin: {x: 43.628006, y: 3.0170135, z: 37.358093, w: -1.5610619}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -10489,7 +10507,7 @@ MonoBehaviour:
   shotDirection: {x: 1, y: 0, z: 0}
   retryFromTee: 1
   minAimBounces: 1
-  hint: 'TURN THE OBSTACLE    LEFT CLICK TO LOCK    SPACE FOR POWER'
+  hint: TURN THE OBSTACLE    LEFT CLICK TO LOCK    SPACE FOR POWER
   cup: {fileID: 1570404447}
   cupMoveShape: 0
   railStart: {fileID: 0}
@@ -10679,7 +10697,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9, y: -510}
+  m_AnchoredPosition: {x: 0, y: -500}
   m_SizeDelta: {x: 280, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &404835200
@@ -10712,7 +10730,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4283780959
-  m_fontColor: {r: 0.37254903, g: 0.30980393, b: 0.33333334, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -12060,7 +12078,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 404, y: -21}
+  m_AnchoredPosition: {x: 400, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &515436107
@@ -13474,7 +13492,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -346}
+  m_AnchoredPosition: {x: 0, y: -356}
   m_SizeDelta: {x: 1020, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &616756817
@@ -19361,8 +19379,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.79999924}
-  m_SizeDelta: {x: 100, y: -50}
+  m_AnchoredPosition: {x: -0.0000038146973, y: -11.399998}
+  m_SizeDelta: {x: 95.9292, y: -50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &742301757
 MonoBehaviour:
@@ -19384,7 +19402,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "DEFENDER\nSHORT SPOON\nSHORT RANGE\nPRECISE POWER\nEASY COURSE ON DEFEND"
+  m_text: 'DEFENDER
+
+
+    SHORT SPOON
+
+    SHORT RANGE
+
+    PRECISE POWER
+
+    EASY
+    COURSE ON DEFEND'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
   m_sharedMaterial: {fileID: 1140813912902175123, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
@@ -19450,7 +19478,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 64.31414, y: 0, z: 52.557392, w: -26.029724}
+  m_margin: {x: 64.31414, y: 0, z: 52.557392, w: -2.231495}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -24906,7 +24934,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 54, y: 7}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &824954232
@@ -25662,7 +25690,7 @@ MonoBehaviour:
   shotDirection: {x: 1, y: 0, z: 0.5}
   retryFromTee: 1
   minAimBounces: 0
-  hint: 'MOVE THE CUP    LEFT CLICK TO LOCK    SPACE FOR POWER'
+  hint: MOVE THE CUP    LEFT CLICK TO LOCK    SPACE FOR POWER
   cup: {fileID: 2040665086}
   cupMoveShape: 0
   railStart: {fileID: 1421337424}
@@ -27710,7 +27738,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -386, y: -30}
+  m_AnchoredPosition: {x: -400, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1040581306
@@ -30142,8 +30170,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 23, y: -18.5}
-  m_SizeDelta: {x: 80, y: 80}
+  m_AnchoredPosition: {x: 26.316196, y: -12.116203}
+  m_SizeDelta: {x: 120.89288, y: 120.89288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1224493648
 Canvas:
@@ -31362,7 +31390,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "P1  A S D      P2  J K L\nCHOOSE IN SECRET\nATTACK BEATS DEFEND\nDEFEND BEATS REFLECT\nREFLECT BEATS ATTACK\nCOUNTER AND SCORE FOR 10 EXTRA DMG"
+  m_text: 'P1  A S D      P2  J K L
+
+    CHOOSE IN SECRET
+
+    ATTACK BEATS DEFEND
+
+    DEFEND
+    BEATS REFLECT
+
+    REFLECT BEATS ATTACK
+
+    COUNTER AND SCORE FOR 10 EXTRA DMG'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
   m_sharedMaterial: {fileID: 1140813912902175123, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
@@ -31499,7 +31538,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "P1  A S D      P2  J K L\nBOTH READY   PRESS ENTER!"
+  m_text: 'P1  A S D      P2  J K L
+
+    BOTH READY   PRESS ENTER!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
   m_sharedMaterial: {fileID: 1140813912902175123, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
@@ -33347,11 +33388,29 @@ MonoBehaviour:
   tutorialTitleText: {fileID: 924400346}
   tutorialInstructionText: {fileID: 616756817}
   tutorialResultText: {fileID: 1925777487}
-  tutorialTitleFormat: "PRACTICE  {0}  {1}"
+  tutorialTitleFormat: PRACTICE  {0}  {1}
   tutorialInstructions:
-  - "AIM WITH THE MOUSE\nLEFT CLICK TO LOCK AIM\nPRESS SPACE TO SET POWER"
-  - "THE SHOT DIRECTION IS FIXED\nMOVE THE CUP INTO THE BALL PATH\nLEFT CLICK TO LOCK IT\nPRESS SPACE TO SET POWER"
-  - "THE SHOT AND CUP ARE FIXED\nTURN THE OBSTACLE TO LINE UP A BOUNCE\nLEFT CLICK TO LOCK IT\nPRESS SPACE TO SET POWER"
+  - 'AIM WITH THE MOUSE
+
+    LEFT CLICK TO LOCK AIM
+
+    PRESS SPACE TO SET POWER'
+  - 'THE SHOT DIRECTION IS FIXED
+
+    MOVE THE CUP INTO THE BALL PATH
+
+    LEFT CLICK
+    TO LOCK IT
+
+    PRESS SPACE TO SET POWER'
+  - 'THE SHOT AND CUP ARE FIXED
+
+    TURN THE OBSTACLE TO LINE UP A BOUNCE
+
+    LEFT
+    CLICK TO LOCK IT
+
+    PRESS SPACE TO SET POWER'
   hpBarSpeed: 1.5
   trailDelay: 0.4
   trailSpeed: 0.6
@@ -33361,38 +33420,64 @@ MonoBehaviour:
   - P1
   - P2
   actionNames:
-  - "ATTACK"
-  - "DEFEND"
-  - "REFLECT"
+  - ATTACK
+  - DEFEND
+  - REFLECT
   resultNames:
-  - "HOLE IN ONE!"
-  - "TWO STROKES"
-  - "MISS!"
+  - HOLE IN ONE!
+  - TWO STROKES
+  - MISS!
   resultColors:
   - {r: 1, g: 0.8, b: 0.2, a: 1}
   - {r: 0.45, g: 0.85, b: 1, a: 1}
   - {r: 0.75, g: 0.75, b: 0.75, a: 1}
   winFormats:
-  - "DRAW"
-  - "{0} WINS ON HP"
-  - "{0} WINS ON HOLES"
-  - "{0} WINS ON STROKES"
-  roundFormat: "ROUND {0} OF {1}"
-  lockedLabel: "LOCKED"
-  choosingLabel: "CHOOSING"
-  bonusFormat: "BONUS MOVE  {0}"
-  lastActionFormat: "LAST MOVE  {0}"
-  revealActionFormat: "{0}\n{1}"
-  revealCounterFormat: "{0} COUNTERS!\n{1} BEATS {2}\nHOLE OUT FOR 10 BONUS DAMAGE"
-  revealSameFormat: "BOTH CHOSE {0}\nNO COUNTER"
-  preGolfFormat: "{0}  {1}\n{2}\n\nPRESS ENTER"
-  golfInfoFormat: "{0}  {1}"
-  strokesFormat: "STROKES {0} OF {1}"
-  turnResultFormat: "{0}\n{1}"
-  counterFormat: "10 BONUS DAMAGE!\n{0}  {1} BEATS {2}"
-  counterLabel: "COUNTER!"
-  damageFormat: "{0} DAMAGE"
-  roundColumnFormat: "{0}\n{1}\nDEALT {3}\nTAKEN {6}\nHP {7}"
+  - DRAW
+  - '{0} WINS ON HP'
+  - '{0} WINS ON HOLES'
+  - '{0} WINS ON STROKES'
+  roundFormat: ROUND {0} OF {1}
+  lockedLabel: LOCKED
+  choosingLabel: CHOOSING
+  bonusFormat: BONUS MOVE  {0}
+  lastActionFormat: LAST MOVE  {0}
+  revealActionFormat: '{0}
+
+    {1}'
+  revealCounterFormat: '{0} COUNTERS!
+
+    {1} BEATS {2}
+
+    HOLE OUT FOR 10 BONUS
+    DAMAGE'
+  revealSameFormat: 'BOTH CHOSE {0}
+
+    NO COUNTER'
+  preGolfFormat: '{0}  {1}
+
+    {2}
+
+
+    PRESS ENTER'
+  golfInfoFormat: '{0}  {1}'
+  strokesFormat: STROKES {0} OF {1}
+  turnResultFormat: '{0}
+
+    {1}'
+  counterFormat: '10 BONUS DAMAGE!
+
+    {0}  {1} BEATS {2}'
+  counterLabel: COUNTER!
+  damageFormat: '{0} DAMAGE'
+  roundColumnFormat: '{0}
+
+    {1}
+
+    DEALT {3}
+
+    TAKEN {6}
+
+    HP {7}'
 --- !u!1001 &1524848359
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33998,7 +34083,7 @@ MonoBehaviour:
   shotDirection: {x: 1, y: 0, z: 0}
   retryFromTee: 1
   minAimBounces: 1
-  hint: 'TURN THE OBSTACLE    LEFT CLICK TO LOCK    SPACE FOR POWER'
+  hint: TURN THE OBSTACLE    LEFT CLICK TO LOCK    SPACE FOR POWER
   cup: {fileID: 2128224703}
   cupMoveShape: 0
   railStart: {fileID: 0}
@@ -34714,7 +34799,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -546}
+  m_AnchoredPosition: {x: 0, y: -569}
   m_SizeDelta: {x: 320, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1559919378
@@ -40295,7 +40380,7 @@ MonoBehaviour:
   shotDirection: {x: 1, y: 0, z: 0.5}
   retryFromTee: 1
   minAimBounces: 0
-  hint: 'MOVE THE CUP    LEFT CLICK TO LOCK    SPACE FOR POWER'
+  hint: MOVE THE CUP    LEFT CLICK TO LOCK    SPACE FOR POWER
   cup: {fileID: 1231406754}
   cupMoveShape: 0
   railStart: {fileID: 188722576}
@@ -40761,7 +40846,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 55, y: -184}
+  m_AnchoredPosition: {x: 55, y: -300}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1692996330
@@ -43037,8 +43122,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -22.8, y: -19.7}
-  m_SizeDelta: {x: 80, y: 80}
+  m_AnchoredPosition: {x: -23.6, y: -18.3}
+  m_SizeDelta: {x: 107.80621, y: 107.80621}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1808903016
 Canvas:
@@ -48702,7 +48787,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 202}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1925777487
@@ -49305,7 +49390,7 @@ MonoBehaviour:
   shotDirection: {x: 1, y: 0, z: 0.5}
   retryFromTee: 1
   minAimBounces: 0
-  hint: 'MOVE THE CUP    LEFT CLICK TO LOCK    SPACE FOR POWER'
+  hint: MOVE THE CUP    LEFT CLICK TO LOCK    SPACE FOR POWER
   cup: {fileID: 760620037}
   cupMoveShape: 0
   railStart: {fileID: 1184432552}
@@ -49761,8 +49846,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 6.5, y: -26.1}
-  m_SizeDelta: {x: 80, y: 80}
+  m_AnchoredPosition: {x: 5.6949034, y: -31.089806}
+  m_SizeDelta: {x: 108.33903, y: 108.33903}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!223 &2003665874
 Canvas:
@@ -55567,7 +55652,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -485, y: -257}
+  m_AnchoredPosition: {x: 0, y: -167}
   m_SizeDelta: {x: 550, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2082782547
@@ -55590,7 +55675,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "1 ATTACKER    2 DEFENDER    3 REFLECTOR\nESC TO RETURN TO MAID SELECT"
+  m_text: '1 ATTACKER    2 DEFENDER    3 REFLECTOR
+
+    ESC TO RETURN TO MAID SELECT'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
   m_sharedMaterial: {fileID: 1140813912902175123, guid: 53cf5c80a090dde49a2f4e3863ee5b2d, type: 2}
